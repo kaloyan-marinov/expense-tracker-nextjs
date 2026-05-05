@@ -11,3 +11,29 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id String @id @default(uuid())  // primary key
+  clerkUserId String @unique
+  email String @unique
+  name String?  // optional
+  imageUrl String?  // optional
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  transactions Transaction[]
+}
+
+model Transaction {
+  id String @id @default(uuid())  // primary key
+  text String
+  amount Float
+
+  // Relation to `model User`
+  userId String
+  user User @relation(fields: [userId], references: [clerkUserId], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  // Create an index
+  @@index([userId])
+}

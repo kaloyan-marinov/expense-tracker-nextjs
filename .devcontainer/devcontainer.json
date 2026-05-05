@@ -7,7 +7,8 @@
         "burkeholland.simple-react-snippets",
         "formulahendry.auto-rename-tag",
         "eamodio.gitlens",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "prisma.prisma"
       ]
     }
   },
