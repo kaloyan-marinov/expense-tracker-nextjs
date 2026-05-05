@@ -4,6 +4,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "burkeholland.simple-react-snippets",
         "formulahendry.auto-rename-tag",
         "eamodio.gitlens",
         "esbenp.prettier-vscode"
