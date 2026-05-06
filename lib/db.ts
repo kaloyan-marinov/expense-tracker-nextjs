@@ -8,7 +8,7 @@ This hack serves to
 prevent that «hot reloading» from initializing the `PrismaClient` over and over.
 
 */
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../app/generated/prisma/client";
 
 declare global {
   var prisma: PrismaClient | undefined;
