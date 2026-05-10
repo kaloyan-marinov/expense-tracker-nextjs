@@ -1,10 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import addTransaction from "@/actions/addTransaction";
 import { toast } from "react-toastify";
 
 // This is going to be a «client component».
 const AddTransaction = () => {
+  const formRef = useRef<HTMLFormElement>(null);
+
   const clientAction = async (formData: FormData) => {
     // console.log("formData.get('text')", formData.get("text"));
     // console.log("formData.get('amount')", formData.get("amount"));
@@ -16,13 +19,14 @@ const AddTransaction = () => {
     } else {
       // console.log(result.data);
       toast.success("Transaction added");
+      formRef.current?.reset();
     }
   };
 
   return (
     <>
       <h3>Add transaction</h3>
-      <form action={clientAction}>
+      <form ref={formRef} action={clientAction}>
         <div className="form-control">
           <label htmlFor="text">Text</label>
           <input
