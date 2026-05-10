@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 export const checkUser = async () => {
   // Obtain currently logged-in «Clerk user».
   const clerkUser = await currentUser();
+  console.log("clerkUser:", clerkUser);
 
   if (!clerkUser) {
     return null;
@@ -23,7 +24,7 @@ export const checkUser = async () => {
   const newUser = await db.user.create({
     data: {
       clerkUserId: clerkUser.id,
-      name: `${clerkUser.firstName} {clerkUser.lastName}`,
+      name: `${clerkUser.firstName} ${clerkUser.lastName}`,
       imageUrl: clerkUser.imageUrl,
       email: clerkUser.emailAddresses[0].emailAddress,
     },
