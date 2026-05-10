@@ -1,8 +1,12 @@
-const Balance = () => {
+import getUserBalance from "@/actions/getUserBalance";
+
+const Balance = async () => {
+  const { balance, error } = await getUserBalance();
+
   return (
     <>
       <h4>Your balance</h4>
-      <h1>1700</h1>
+      <h1>${balance}</h1>
     </>
   );
 };
