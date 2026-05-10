@@ -1,6 +1,11 @@
 import { SignInButton, Show, UserButton } from "@clerk/nextjs";
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+// Technically, this is a «server component».
+// (It runs on the server.)
+const Header = async () => {
+  const user = await checkUser();
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
