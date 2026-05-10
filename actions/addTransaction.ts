@@ -1,4 +1,5 @@
 "use server";
+import { auth } from "@clerk/nextjs/server";
 
 // This is only going to run on the server.
 
@@ -24,6 +25,15 @@ async function addTransaction(formData: FormData): Promise<TransactionResult> {
 
   const text: string = textValue.toString();
   const amount: number = parseFloat(amountValue.toString());
+
+  // Get logged-in user
+  const { userId: clerkUserId } = await auth();
+  console.log("clerkUserId", clerkUserId);
+  if (!clerkUserId) {
+    return {
+      error: "User not found",
+    };
+  }
 
   const transactionData: TransactionData = {
     text,
