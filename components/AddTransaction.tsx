@@ -1,12 +1,21 @@
 "use client";
 
+import addTransaction from "@/actions/addTransaction";
+
 // This is going to be a «client component».
 const AddTransaction = () => {
   const clientAction = async (formData: FormData) => {
-    console.log("formData.get('text')", formData.get("text"));
-    console.log("formData.get('amount')", formData.get("amount"));
+    // console.log("formData.get('text')", formData.get("text"));
+    // console.log("formData.get('amount')", formData.get("amount"));
 
-    // From here, a «server action» will be called.
+    const result = await addTransaction(formData);
+
+    if (result.error) {
+      alert(result.error);
+    } else {
+      console.log(result.data);
+      alert("Transaction added");
+    }
   };
 
   return (
