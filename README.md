@@ -9,6 +9,10 @@ cp \
 ```
 and fill in all missing values
 
+```
+nvm use $(cat .nvmrc)
+```
+
 First, run the development server:
 
 ```bash
